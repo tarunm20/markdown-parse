@@ -1,3 +1,4 @@
+
 // File reading code from https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,11 +13,22 @@ public class MarkdownParse {
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
+            if(nextOpenBracket==-1){
+                break;
+            }
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
+            System.out.println(nextOpenBracket);
+            System.out.println(closeParen);
             toReturn.add(markdown.substring(openParen + 1, closeParen));
-            currentIndex = closeParen + 1;
+            System.out.println(toReturn.get(toReturn.size()-1));
+            if (closeParen>currentIndex){
+                currentIndex = closeParen + 1;
+            }else{
+                break;
+            }
+            
         }
         return toReturn;
     }
