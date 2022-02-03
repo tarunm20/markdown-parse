@@ -31,7 +31,7 @@ public class MarkdownParseTest {   //create the public class that test for the M
    @Test
    public void testGetLinks3() throws IOException {
        String fileName = "./test-file3.md";
-       List<String> expected = List.of();
+       List<String> expected = List.of("www.google.com","www.google.com");
        assertEquals(expected, MarkdownParse.getLinks(Files.readString(Path.of(fileName))));
    }
 
